@@ -21,15 +21,8 @@ public class PageAccueil extends AbstractFullPage{
 /*######################################################################################################################
                                                   WEBELEMENTS
 ######################################################################################################################*/
-
-    @FindBy (xpath = "//div[@id=\"MenuContent\"]/a[contains(@href,'signon')]")
-    WebElement buttonSignIn;
-
     @FindBy(xpath = "//div[@id=\"MainImageContent\"]//area")
     List<WebElement> listCategoryAnimals;
-
-    @FindBy (xpath = "//div[@id=\"SidebarContent\"]/a[contains(@href,'FISH')]")
-    WebElement buttonFishSidebarContent;
 
     @FindBy (xpath = "//div[@id=\"WelcomeContent\"]")
     WebElement WelcomeContent;
@@ -37,19 +30,21 @@ public class PageAccueil extends AbstractFullPage{
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
+    public boolean signInDisplay (){
+        return getHeader().signIn.isDisplayed();
+    }
+
     public String WelcomeContent(WebDriverWait wait) {
         wait.until(ExpectedConditions.visibilityOf(WelcomeContent));
         return WelcomeContent.getText();
     }
 
-
-    public PageConnexion clickSignIn (WebDriverWait wait) {
-        seleniumTools.clickOnElement(wait, buttonSignIn);
-        return new PageConnexion(driver);
+    public PageConnexion clickSignIn (WebDriverWait wait, WebDriver driver) throws Throwable {
+        return getHeader().clickSignIn(wait, driver);
     }
 
-    public PageCategoryProduct clickOnProduct (WebDriverWait wait, WebElement we) {
-        seleniumTools.clickOnElement(wait, we);
+    public PageCategoryProduct clickOnProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, driver, we);
         return new PageCategoryProduct(driver);
     }
 

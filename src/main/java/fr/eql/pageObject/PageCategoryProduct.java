@@ -17,25 +17,17 @@ public class PageCategoryProduct extends AbstractFullPage{
         PageFactory.initElements(driver, this);
     }
 
-    /*######################################################################################################################
-                                                      WEBELEMENTS
-    ######################################################################################################################*/
-    @FindBy(xpath = "//a[text()='FI-SW-01']")
-    WebElement FISW01;
-
+/*######################################################################################################################
+                                                  WEBELEMENTS
+######################################################################################################################*/
     @FindBy(xpath = "//div[@id=\"Catalog\"]//td")
     List<WebElement> listProduct;
-
-    @FindBy(xpath = "//a[contains(@href,'workingItemId=EST-1')]")
-    WebElement addCartEST1;
-
 
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
-
-    public PageSubProduct selectProduct (WebDriverWait wait, WebElement we){
-        seleniumTools.clickOnElement(wait, we);
+    public PageSubProduct selectProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, driver, we);
         return new PageSubProduct(driver);
     }
 
@@ -43,6 +35,7 @@ public class PageCategoryProduct extends AbstractFullPage{
         Map<String, WebElement> mapProduct = new HashMap<>();
         int index = listProduct.size();
         for (int i = 0; i < index; i++){
+            LOGGER.info("Ajout dans la map : " + listProduct.get(i).getText() + " / " + listProduct.get(i));
             mapProduct.put(listProduct.get(i).getText(), listProduct.get(i));
         }
         return mapProduct;

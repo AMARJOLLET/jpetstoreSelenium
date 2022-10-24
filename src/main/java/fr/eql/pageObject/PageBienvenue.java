@@ -24,6 +24,7 @@ public class PageBienvenue extends AbstractFullPage{
 
     @FindBy(xpath = "//div[@id=\"Content\"]/h2")
     WebElement title;
+
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
@@ -32,9 +33,8 @@ public class PageBienvenue extends AbstractFullPage{
         return title.getText();
     }
 
-
-    public PageAccueil clickEnterTheStore (WebDriverWait wait) {
-        seleniumTools.clickOnElement(wait, buttonEnterTheStore);
+    public PageAccueil clickEnterTheStore (WebDriverWait wait, WebDriver driver) throws Throwable {
+        seleniumTools.clickOnElement(wait, driver, buttonEnterTheStore);
         return new PageAccueil(driver);
     }
 

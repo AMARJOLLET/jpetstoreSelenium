@@ -11,7 +11,6 @@ import java.io.File;
 public class Logging {
     public String className ;
 
-
     public Logging() {
         this.className = this.getClass().getSimpleName();
         System.setProperty("logFileName", this.className);

@@ -17,9 +17,9 @@ public class PageSubProduct extends AbstractFullPage{
         PageFactory.initElements(driver, this);
     }
 
-    /*######################################################################################################################
-                                                      WEBELEMENTS
-    ######################################################################################################################*/
+/*######################################################################################################################
+                                                  WEBELEMENTS
+######################################################################################################################*/
 
     @FindBy(xpath = "//div[@id=\"Catalog\"]//a")
     List<WebElement> listSubProduct;
@@ -27,22 +27,18 @@ public class PageSubProduct extends AbstractFullPage{
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
-
-    public void selectProduct (WebDriverWait wait, WebElement we){
-        seleniumTools.clickOnElement(wait, we);
-    }
-
     public Map<String, WebElement> returnMapSubProduct (){
         Map<String, WebElement> mapProduct = new HashMap<>();
         int index = (listSubProduct.size())/2;
         for (int i = 0; i < index; i++){
+            LOGGER.info("Ajout dans la map : " + listSubProduct.get(i).getText() + " / " + listSubProduct.get(i+1));
             mapProduct.put(listSubProduct.get(i).getText(), listSubProduct.get(i+1));
         }
         return mapProduct;
     }
 
-    public PageShoppingCart addCartSubProduct (WebDriverWait wait, WebElement we) {
-        seleniumTools.clickOnElement(wait, we);
+    public PageShoppingCart addCartSubProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, driver, we);
         return new PageShoppingCart(driver);
     }
 }
