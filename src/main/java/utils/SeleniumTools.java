@@ -36,8 +36,6 @@ public class SeleniumTools extends Logging {
 
     public void clickOnElement(WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
         try {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", we);
             wait.until(ExpectedConditions.elementToBeClickable(we));
             we.click();
         } catch (Throwable e) {

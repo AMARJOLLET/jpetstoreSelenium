@@ -49,12 +49,7 @@ public class PageAccueil extends AbstractFullPage{
     }
 
     public Map<String, WebElement> returnMapProduct (WebDriverWait wait){
-        wait.until(ExpectedConditions.elementToBeClickable(listCategoryAnimals.get(0)));
-        Map<String, WebElement> mapCategory = new HashMap<>();
-        for(WebElement we : listCategoryAnimals){
-            mapCategory.put(we.getAttribute("alt").toLowerCase(), we);
-        }
-        return mapCategory;
+        return getHeader().returnMapProductQuickLinks(wait);
     }
 
 }

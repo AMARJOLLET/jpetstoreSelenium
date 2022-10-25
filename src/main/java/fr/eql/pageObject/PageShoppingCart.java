@@ -41,6 +41,10 @@ public class PageShoppingCart extends AbstractFullPage{
         return Title.getText();
     }
 
+    public Map<String, WebElement> returnMapProduct (WebDriverWait wait){
+        return getHeader().returnMapProductQuickLinks(wait);
+    }
+
     public Map<String, Map<String, WebElement>> returnMapShoppingCart(){
         Map<String, Map<String, WebElement>> mapShoppingCart = new HashMap<>();
         Map<String, WebElement> mapProductCart = new HashMap<>();
@@ -70,6 +74,6 @@ public class PageShoppingCart extends AbstractFullPage{
 
     public double recupererSubtotal() {
         WebElement we = listTable.get(listTable.size()-1).findElement(By.xpath("./td"));
-        return Double.parseDouble(we.getText().replace("Sub Total: $",""));
+        return Double.parseDouble(we.getText().replace("Sub Total: $","").replace(",",""));
     }
 }

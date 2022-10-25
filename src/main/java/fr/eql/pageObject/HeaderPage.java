@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
@@ -49,7 +50,8 @@ public class HeaderPage extends AbstractBlockPage {
         seleniumTools.clickOnElement(wait, driver, signOff);
     }
 
-    public Map<String, WebElement> returnMapProductQuickLinks(){
+    public Map<String, WebElement> returnMapProductQuickLinks(WebDriverWait wait){
+        wait.until(ExpectedConditions.elementToBeClickable(listProductQuickLinks.get(0)));
         Map<String, WebElement> mapProductQuickLinks = new HashMap<>();
         for (WebElement we : listProductQuickLinks){
             String libelle = we.getAttribute("href");
