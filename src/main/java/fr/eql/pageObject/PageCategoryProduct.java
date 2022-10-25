@@ -1,5 +1,6 @@
 package fr.eql.pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,12 @@ public class PageCategoryProduct extends AbstractFullPage{
 													METHODES
 ######################################################################################################################*/
     public PageSubProduct selectProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, driver, we);
+        return new PageSubProduct(driver);
+    }
+
+    public PageSubProduct selectProductSample (WebDriverWait wait, WebDriver driver, String productName) throws Throwable {
+        WebElement we = driver.findElement(By.xpath("//div[@id='Catalog']//a[contains(@href, 'productId="+productName+"')]"));
         seleniumTools.clickOnElement(wait, driver, we);
         return new PageSubProduct(driver);
     }

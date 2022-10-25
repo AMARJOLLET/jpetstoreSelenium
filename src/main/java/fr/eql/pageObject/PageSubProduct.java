@@ -1,5 +1,6 @@
 package fr.eql.pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,12 @@ public class PageSubProduct extends AbstractFullPage{
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
+    public PageShoppingCart addCartSubProductSample (WebDriverWait wait, WebDriver driver, String subProductName) throws Throwable {
+        WebElement we = driver.findElement(By.xpath("//div[@id='Catalog']//a[contains(@href,'workingItemId="+subProductName+"')]"));
+        seleniumTools.clickOnElement(wait, driver, we);
+        return new PageShoppingCart(driver);
+    }
+
     public Map<String, WebElement> returnMapSubProduct (){
         Map<String, WebElement> mapProduct = new HashMap<>();
         int index = (listSubProduct.size())/2;

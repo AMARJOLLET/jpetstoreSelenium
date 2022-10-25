@@ -17,13 +17,13 @@ public class PageConnexion extends AbstractFullPage{
 /*######################################################################################################################
                                                   WEBELEMENTS
 ######################################################################################################################*/
-    @FindBy(xpath = "//input [@name=\"username\"]")
+    @FindBy(name = "username")
     WebElement fieldUsername;
 
-    @FindBy(xpath = "//input [@name=\"password\"]")
+    @FindBy(name = "password")
     WebElement fieldPassword;
 
-    @FindBy(xpath = "//input [@name=\"signon\"]")
+    @FindBy(name = "signon")
     WebElement buttonSigneIn;
 
 /*######################################################################################################################

@@ -24,7 +24,7 @@ public class PageAccueil extends AbstractFullPage{
     @FindBy(xpath = "//div[@id=\"MainImageContent\"]//area")
     List<WebElement> listCategoryAnimals;
 
-    @FindBy (xpath = "//div[@id=\"WelcomeContent\"]")
+    @FindBy (id = "WelcomeContent")
     WebElement WelcomeContent;
 
 /*######################################################################################################################

@@ -11,6 +11,7 @@ import java.io.File;
 public class Logging {
     public String className ;
 
+
     public Logging() {
         this.className = this.getClass().getSimpleName();
         System.setProperty("logFileName", this.className);
@@ -18,4 +19,5 @@ public class Logging {
         File file = new File("src/main/resources/log4j2.properties");
         context.setConfigLocation(file.toURI());
     }
+
 }
