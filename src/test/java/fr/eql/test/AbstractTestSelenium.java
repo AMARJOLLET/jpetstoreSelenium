@@ -17,12 +17,11 @@ import java.time.Duration;
 
 public class AbstractTestSelenium extends Logging {
     // LOGGER
-    public Logger LOGGER = LoggerFactory.getLogger(className);
     SeleniumTools seleniumTools = new SeleniumTools(className);
     OutilsProjet outilsProjet = new OutilsProjet();
 
     // Driver
-    protected static WebDriver driver;
+    protected WebDriver driver;
     protected WebDriverWait wait;
     protected int implicitWaitingTime = 2;
     protected int explicitWaitingTime = 10;

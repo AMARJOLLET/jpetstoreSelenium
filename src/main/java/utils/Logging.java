@@ -10,7 +10,7 @@ import java.io.File;
 
 public class Logging {
     public String className ;
-
+    public Logger LOGGER;
 
     public Logging() {
         this.className = this.getClass().getSimpleName();
@@ -18,6 +18,8 @@ public class Logging {
         LoggerContext context = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
         File file = new File("src/main/resources/log4j2.properties");
         context.setConfigLocation(file.toURI());
+        LOGGER = LoggerFactory.getLogger(className);
+
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HeaderPage extends AbstractBlockPage {
+public class HeaderPage extends AbstractFullPage {
 
     public HeaderPage(WebDriver driver) {
         super(driver);
