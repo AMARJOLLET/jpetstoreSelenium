@@ -4,6 +4,7 @@ package fr.eql.test;
 import fr.eql.pageObject.*;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
+import utils.OutilsProjet;
 import utils.SeleniumTools;
 
 import java.io.IOException;
@@ -21,7 +22,6 @@ public class TestSelenium extends AbstractTestSelenium {
     // Parametre
     String username = "j2ee";
     String password = "j2ee";
-    int nombreAjout = 10;
     double unitPrice;
     double subTotal;
 
@@ -33,7 +33,7 @@ public class TestSelenium extends AbstractTestSelenium {
     void run() throws Throwable {
         LOGGER.info("DEBUT DU TEST");
         // Driver URL
-        driver.get("http://192.168.102.117:8081/jpetstore");
+        driver.get("http://192.168.102.174:8081/jpetstore");
 
         PageBienvenue pageBienvenue = new PageBienvenue(driver);
         LOGGER.info("Connexion à la page de bienvenue");
@@ -62,6 +62,7 @@ public class TestSelenium extends AbstractTestSelenium {
             assertEquals("Shopping Cart", pageShoppingCart.title(), "Le titre n'est pas celui attentu");
             Map<String, Map<String, WebElement>> mapShoppingCart = pageShoppingCart.returnMapShoppingCart();
             LOGGER.info("Une seul entrée : " + listJDD.get(i).get("subProduct"));
+            int nombreAjout = Integer.parseInt(OutilsProjet.generateRandomNumber(1));
             LOGGER.info("Modification de la quantité avec " + nombreAjout);
             pageShoppingCart.setQuantityProduct(wait, driver, mapShoppingCart.get(listJDD.get(i).get("subProduct")).get("Quantity"), nombreAjout);
             LOGGER.info("Update de la carte");

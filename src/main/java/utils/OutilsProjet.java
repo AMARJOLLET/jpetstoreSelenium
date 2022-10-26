@@ -6,10 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class OutilsProjet extends Logging {
@@ -55,6 +52,21 @@ public class OutilsProjet extends Logging {
             listJDD.add(jdd);
         }
         return listJDD;
+    }
+
+    public static String generateRandomNumber(int numberOfDigit) {
+        if (numberOfDigit <= 0) {
+            throw new IllegalArgumentException("A random number's length cannot be zero or negative");
+        }
+        Random random = new Random();
+        String bound = "1";
+        StringBuilder nombre0 = new StringBuilder();
+        for (int i = 0; i < numberOfDigit; i++) {
+            nombre0.append("0");
+        }
+        bound = bound + nombre0;
+        int boundInteger = Integer.parseInt(bound);
+        return String.format("%0" + numberOfDigit + "d", random.nextInt(boundInteger));
     }
 }
 
