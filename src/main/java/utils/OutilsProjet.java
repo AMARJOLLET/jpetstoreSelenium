@@ -72,5 +72,14 @@ public class OutilsProjet extends Logging {
         } while (Objects.equals(result,"0"));
         return result;
     }
+
+    // 2022-10-08
+    // 10/8/2022
+
+    public String changementDate(String date){
+        String MMsans0 = date.substring(8,10).replace("0","");
+        return date = date.substring(5,7) + "/" + MMsans0 + "/" + date.substring(0,4);
+    }
+
 }
 

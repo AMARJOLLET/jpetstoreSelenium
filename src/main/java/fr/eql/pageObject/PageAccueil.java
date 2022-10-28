@@ -39,12 +39,12 @@ public class PageAccueil extends AbstractFullPage{
         return WelcomeContent.getText();
     }
 
-    public PageConnexion clickSignIn (WebDriverWait wait, WebDriver driver) throws Throwable {
-        return getHeader().clickSignIn(wait, driver);
+    public PageConnexion clickSignIn (WebDriverWait wait) throws Throwable {
+        return getHeader().clickSignIn(wait);
     }
 
-    public PageCategoryProduct clickOnProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, we);
+    public PageCategoryProduct clickOnProduct (WebDriverWait wait, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, we);
         return new PageCategoryProduct(driver);
     }
 

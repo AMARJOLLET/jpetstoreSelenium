@@ -29,12 +29,12 @@ public class PageConnexion extends AbstractFullPage{
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
-    public PageAccueil seConnecter (WebDriverWait wait, WebDriver driver, String username, String password) throws Throwable {
+    public PageAccueil seConnecter (WebDriverWait wait, String username, String password) throws Throwable {
         LOGGER.info("Renseigne : " + username);
-        seleniumTools.sendKey(wait, driver, fieldUsername, username);
+        seleniumTools.sendKey(wait, fieldUsername, username);
         LOGGER.info("Renseigne : " + password);
-        seleniumTools.sendKey(wait, driver, fieldPassword, password);
-        seleniumTools.clickOnElement(wait, driver, buttonSigneIn);
+        seleniumTools.sendKey(wait, fieldPassword, password);
+        seleniumTools.clickOnElement(wait, buttonSigneIn);
         return new PageAccueil(driver);
     }
 

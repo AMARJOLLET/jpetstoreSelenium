@@ -2,32 +2,35 @@ package fr.eql.test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import utils.Logging;
-import utils.OutilsProjet;
-import utils.SeleniumTools;
+import utils.*;
+
 import java.time.Duration;
 
 
-public class AbstractTestSelenium extends Logging {
-    // LOGGER
-    SeleniumTools seleniumTools = new SeleniumTools(className);
-    OutilsProjet outilsProjet = new OutilsProjet();
 
+public class AbstractTestSelenium extends Logging implements TestWatcher {
     // Driver
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected int implicitWaitingTime = 2;
     protected int explicitWaitingTime = 10;
 
-    //
+    // LOGGER
+    OutilsProjet outilsProjet = new OutilsProjet();
+    InstanciationDriver instanciationDriver;
+    SeleniumTools seleniumTools;
+    Assertion assertion;
+    Snapshot snapshot;
+
+    // Variable
     String navigateur = "chrome";
+
 
     @BeforeEach
     void startup() {
@@ -57,17 +60,22 @@ public class AbstractTestSelenium extends Logging {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitingTime));
         wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWaitingTime));
+        instanciationDriver = new InstanciationDriver(driver);
+        seleniumTools = new SeleniumTools(driver);
+        assertion = new Assertion(driver);
+        snapshot = new Snapshot(driver);
+
         LOGGER.info("Setup wait et driver effectué");
     }
 
 
 
-
     @AfterEach
-    void tearDown() throws InterruptedException {
+    void tearDown() {
         LOGGER.info("Arret du driver ...");
         driver.quit();
         LOGGER.info("Arret du driver effectué");
+        //saveAndCleanLogFiles();
     }
 
 

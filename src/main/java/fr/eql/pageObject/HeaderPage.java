@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.SeleniumTools;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,8 @@ public class HeaderPage extends AbstractFullPage {
         PageFactory.initElements(driver, this);
     }
 
-/*######################################################################################################################
+
+    /*######################################################################################################################
                                                   WEBELEMENTS
 ######################################################################################################################*/
     @FindBy(xpath = "//div[@id='MenuContent']/a[contains(@href,'viewCart')]")
@@ -36,18 +38,18 @@ public class HeaderPage extends AbstractFullPage {
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
-    public PageShoppingCart clickViewCart(WebDriverWait wait, WebDriver driver) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, viewCart);
+    public PageShoppingCart clickViewCart(WebDriverWait wait) throws Throwable {
+        seleniumTools.clickOnElement(wait, viewCart);
         return new PageShoppingCart(driver);
     }
 
-    public PageConnexion clickSignIn(WebDriverWait wait, WebDriver driver) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, signIn);
+    public PageConnexion clickSignIn(WebDriverWait wait) throws Throwable {
+        seleniumTools.clickOnElement(wait, signIn);
         return new PageConnexion(driver);
     }
 
-    public void clickSignOff(WebDriverWait wait, WebDriver driver) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, signOff);
+    public void clickSignOff(WebDriverWait wait) throws Throwable {
+        seleniumTools.clickOnElement(wait, signOff);
     }
 
     public Map<String, WebElement> returnMapProductQuickLinks(WebDriverWait wait){

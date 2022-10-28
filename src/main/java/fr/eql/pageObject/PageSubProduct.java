@@ -28,9 +28,9 @@ public class PageSubProduct extends AbstractFullPage{
 /*######################################################################################################################
 													METHODES
 ######################################################################################################################*/
-    public PageShoppingCart addCartSubProductSample (WebDriverWait wait, WebDriver driver, String subProductName) throws Throwable {
+    public PageShoppingCart addCartSubProductSample (WebDriverWait wait, String subProductName) throws Throwable {
         WebElement we = driver.findElement(By.xpath("//div[@id='Catalog']//a[contains(@href,'workingItemId="+subProductName+"')]"));
-        seleniumTools.clickOnElement(wait, driver, we);
+        seleniumTools.clickOnElement(wait, we);
         return new PageShoppingCart(driver);
     }
 
@@ -44,8 +44,8 @@ public class PageSubProduct extends AbstractFullPage{
         return mapProduct;
     }
 
-    public PageShoppingCart addCartSubProduct (WebDriverWait wait, WebDriver driver, WebElement we) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, we);
+    public PageShoppingCart addCartSubProduct (WebDriverWait wait, WebElement we) throws Throwable {
+        seleniumTools.clickOnElement(wait, we);
         return new PageShoppingCart(driver);
     }
 }

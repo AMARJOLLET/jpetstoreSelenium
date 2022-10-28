@@ -33,8 +33,8 @@ public class PageBienvenue extends AbstractFullPage{
         return title.getText();
     }
 
-    public PageAccueil clickEnterTheStore (WebDriverWait wait, WebDriver driver) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, buttonEnterTheStore);
+    public PageAccueil clickEnterTheStore (WebDriverWait wait) throws Throwable {
+        seleniumTools.clickOnElement(wait, buttonEnterTheStore);
         return new PageAccueil(driver);
     }
 

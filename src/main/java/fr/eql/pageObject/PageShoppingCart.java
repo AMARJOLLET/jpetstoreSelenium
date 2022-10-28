@@ -63,13 +63,13 @@ public class PageShoppingCart extends AbstractFullPage{
         return mapShoppingCart;
     }
 
-    public void setQuantityProduct(WebDriverWait wait, WebDriver driver, WebElement we, int nombreAjout) throws Throwable {
+    public void setQuantityProduct(WebDriverWait wait, WebElement we, int nombreAjout) throws Throwable {
         WebElement inputQuantity = we.findElement(By.xpath("./input"));
-        seleniumTools.sendKey(wait, driver, inputQuantity, String.valueOf(nombreAjout));
+        seleniumTools.sendKey(wait, inputQuantity, String.valueOf(nombreAjout));
     }
 
-    public void clickUpdateCart (WebDriverWait wait, WebDriver driver) throws Throwable {
-        seleniumTools.clickOnElement(wait, driver, updateCart);
+    public void clickUpdateCart (WebDriverWait wait) throws Throwable {
+        seleniumTools.clickOnElement(wait, updateCart);
     }
 
     public double recupererSubtotal() {
